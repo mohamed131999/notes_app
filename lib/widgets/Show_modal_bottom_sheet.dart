@@ -20,10 +20,17 @@ class AddNoteBottomSheet extends StatelessWidget {
           }
         },
         builder: (BuildContext context, AddNotesState state) {
+          // print('ui rebuild');
           return AbsorbPointer(
             absorbing: state is AddNotesLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.only(
+                left: 16.0,
+                right: 16,
+                bottom: MediaQuery.of(
+                  context,
+                ).viewInsets.bottom, // دى علشان ياخد حجم الكيبورد بتاع الموبايل
+              ),
               child: SingleChildScrollView(child: AddFormNote()),
             ),
           );
